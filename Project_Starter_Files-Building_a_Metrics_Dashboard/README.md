@@ -2,20 +2,22 @@
 
 ## Verify the monitoring installation
 
-*TODO:* run `kubectl` command to show the running pods and services for all components. Take a screenshot of the output and include it here to verify the installation
+run `kubectl` command to show the running pods and services for all components. Take a screenshot of the output and include it here to verify the installation
 
 ## Setup the Jaeger and Prometheus source
-*TODO:* Expose Grafana to the internet and then setup Prometheus as a data source. Provide a screenshot of the home page after logging into Grafana.
+Expose Grafana to the internet and then setup Prometheus as a data source. Provide a screenshot of the home page after logging into Grafana.
 
 ## Create a Basic Dashboard
-*TODO:* Create a dashboard in Grafana that shows Prometheus as a source. Take a screenshot and include it here.
+Create a dashboard in Grafana that shows Prometheus as a source. Take a screenshot and include it here.
 
 ## Describe SLO/SLI
-*TODO:* Describe, in your own words, what the SLIs are, based on an SLO of *monthly uptime* and *request response time*.
+Describe, in your own words, what the SLIs are, based on an SLO of *monthly uptime* and *request response time*.
+* SLIs are Service Level Indicators. These are metrics which measured the service. For SLOs Service Level Objectives uptime it measures the availability of the service, e.g. the Healthcheck and for request response time it measures collected metrics based on the request and response time, usually displayed/calculated in percentiles.
 
 ## Creating SLI metrics.
 *TODO:* It is important to know why we want to measure certain metrics for our customer. Describe in detail 5 metrics to measure these SLIs. 
-
+1. 99 Percentile Response time: how fast a fast can process requests and provide a valuable response.
+2. Response Status: Ho
 ## Create a Dashboard to measure our SLIs
 *TODO:* Create a dashboard to measure the uptime of the frontend and backend services We will also want to measure to measure 40x and 50x errors. Create a dashboard that show these values over a 24 hour period and take a screenshot.
 

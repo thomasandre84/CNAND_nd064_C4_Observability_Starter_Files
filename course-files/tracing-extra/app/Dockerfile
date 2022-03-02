@@ -1,6 +1,6 @@
 # Use the official lightweight Python image.
 # https://hub.docker.com/_/python
-FROM python:3.8-slim
+FROM python:3.9-slim
 
 # Copy local code to the container image.
 ENV APP_HOME /app
@@ -12,6 +12,7 @@ RUN pip install -r requirements.txt
 # Install dependecies without installing package depencies to avoid conflicts
 RUN pip install --no-deps redis-opentracing
 
+EXPOSE 8080
 ENV PORT=7111
 # Run the web service on container startup. Here we use the gunicorn
 # webserver, with one worker process and 8 threads.
