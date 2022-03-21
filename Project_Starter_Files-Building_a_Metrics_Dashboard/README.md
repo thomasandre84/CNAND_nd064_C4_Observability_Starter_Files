@@ -3,24 +3,29 @@
 ## Verify the monitoring installation
 
 run `kubectl` command to show the running pods and services for all components. Take a screenshot of the output and include it here to verify the installation
+![](answer-img/verify_monitoring_installation.png)
 
 ## Setup the Jaeger and Prometheus source
 Expose Grafana to the internet and then setup Prometheus as a data source. Provide a screenshot of the home page after logging into Grafana.
-
+![](answer-img/Grafana_Home.png)
 ## Create a Basic Dashboard
 Create a dashboard in Grafana that shows Prometheus as a source. Take a screenshot and include it here.
-
+![](answer-img/Basic_Dashboard_Prometheus_datasource.png)
 ## Describe SLO/SLI
 Describe, in your own words, what the SLIs are, based on an SLO of *monthly uptime* and *request response time*.
 * SLIs are Service Level Indicators. These are metrics which measured the service. For SLOs Service Level Objectives uptime it measures the availability of the service, e.g. the Healthcheck and for request response time it measures collected metrics based on the request and response time, usually displayed/calculated in percentiles.
 
 ## Creating SLI metrics.
-*TODO:* It is important to know why we want to measure certain metrics for our customer. Describe in detail 5 metrics to measure these SLIs. 
+It is important to know why we want to measure certain metrics for our customer. Describe in detail 5 metrics to measure these SLIs. 
 1. 99 Percentile Response time: how fast a fast can process requests and provide a valuable response.
-2. Response Status: Ho
+2. Response Status: The percentage of successful requests with response status 20x or 30x  vs. the unsuccessful requests with either 40x or even 50x response status. To see how many requests are successfully handled for our customers.
+3. The average time a client requires to proceed a workflow. By fetching the initial request with a kind of span as tracing id. all following requests will be within the span until the last action has been taken.
+4. Number of requests per hour. Be collecting the sum of requests for a defined timerange.
+5. Number of new registrations per month. By fetching the new regisered users by either log-entries or by the database.
+ 
 ## Create a Dashboard to measure our SLIs
-*TODO:* Create a dashboard to measure the uptime of the frontend and backend services We will also want to measure to measure 40x and 50x errors. Create a dashboard that show these values over a 24 hour period and take a screenshot.
-
+Create a dashboard to measure the uptime of the frontend and backend services We will also want to measure 40x and 50x errors. Create a dashboard that show these values over a 24 hour period and take a screenshot.
+![](answer-img/SLI_Dashboard.png)
 ## Tracing our Flask App
 *TODO:*  We will create a Jaeger span to measure the processes on the backend. Once you fill in the span, provide a screenshot of it here. Also provide a (screenshot) sample Python file containing a trace and span code used to perform Jaeger traces on the backend service.
 
