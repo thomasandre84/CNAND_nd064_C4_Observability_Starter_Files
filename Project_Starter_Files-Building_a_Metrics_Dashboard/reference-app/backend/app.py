@@ -2,6 +2,9 @@ from flask import Flask, render_template, request, jsonify
 
 import pymongo
 from flask_pymongo import PyMongo
+import logging
+from jaeger_client import Config
+from flask_opentracing import FlaskTracing
 
 app = Flask(__name__)
 
@@ -12,6 +15,25 @@ app.config[
 
 mongo = PyMongo(app)
 
+def init_tracer(service):
+    logging.getLogger("").handlers = []
+    logging.basicConfig(format="%(message)s", level=logging.DEBUG)
+
+
+    config = Config(
+        config={
+            'sampler':
+                {'type': 'const',
+                 'param': 1},
+            'logging': True,
+            'reporter_batch_size': 1,},
+        service_name=service)
+    # this call also sets opentracing.tracer
+    return config.initialize_tracer()
+
+
+tracer = init_tracer("backend-service")
+tracing = FlaskTracing(tracer, True, app)
 
 @app.route("/")
 def homepage():
